@@ -30,8 +30,7 @@ jobs:
           report_history: report-history
 
       - name: Deploy Report to Github Pages
-        if: always()
         uses: peaceiris/actions-gh-pages@v4
-        env:
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: report-history
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./report-history
