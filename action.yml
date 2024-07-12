@@ -66,5 +66,5 @@ runs:
 
     - name: Generate Report History
       if: always()
-      run: $GITHUB_ACTION_PATH/main.sh
+      run: $GITHUB_ACTION_PATH/generates.sh
       shell: bash
