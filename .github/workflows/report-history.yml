@@ -1,0 +1,38 @@
+name: report-history
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-report:
+    name: Generate Report
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Get history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Report History Action
+        uses: firmanrosid/report-history@master
+        if: always()
+        with:
+          subfolder: smoke
+          keep_reports: 2
+          report_folder: report-timeline
+          gh_pages: gh-pages
+          report_history: report-history
+
+      - name: Deploy Report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: report-history
