@@ -50,7 +50,7 @@ runs:
         ref: gh-pages
         path: gh-pages
 
-    - name: Generate Report History
+    - name: Set Report History
       if: always()
       env:
         INPUT_REPORT_FOLDER: ${{ inputs.report_folder }}
@@ -61,5 +61,10 @@ runs:
         INPUT_GITHUB_REPO: ${{ inputs.github_repo }}
         INPUT_GITHUB_REPO_OWNER: ${{ inputs.github_repo_owner }}
         INPUT_GITHUB_RUN_NUM: ${{ inputs.github_run_num }}
-      run: $GITHUB_ACTION_PATH/generates.sh
+      run: chmod +x $GITHUB_ACTION_PATH/generates.sh
+      shell: bash
+
+    - name: Generate Report History
+      if: always()
+      run: $GITHUB_ACTION_PATH/main.sh
       shell: bash
