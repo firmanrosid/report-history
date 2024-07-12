@@ -60,7 +60,6 @@ runs:
         INPUT_KEEP_REPORTS: ${{ inputs.keep_reports }}
         INPUT_GITHUB_REPO: ${{ inputs.github_repo }}
         INPUT_GITHUB_REPO_OWNER: ${{ inputs.github_repo_owner }}
-        INPUT_GITHUB_REPO_OWNER: ${{ inputs.github_repo_owner }}
         INPUT_GITHUB_RUN_NUM: ${{ inputs.github_run_num }}
       run: generates.sh
       shell: bash
